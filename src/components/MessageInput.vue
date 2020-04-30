@@ -8,6 +8,7 @@
 
 <script>
 import db from '@/firebase/init'
+import moment from 'moment'
 
 export default {
     name: 'MessageInput',
@@ -39,19 +40,20 @@ export default {
     created() {
 
         db.collection('messages').orderBy('time').onSnapshot(snap =>{
-            console.log(snap.docChanges())
-            snap.docs.forEach(doc => {
-                let data = doc.data()
-                let obj = {
-                    name: data.name,
-                    message: data.message,
-                    time: data.time
-                }
-                obj.id = doc.id
-                this.messages = [...this.messages, obj]
-            })
-            this.updateMsgs(this.messages)
-            this.messages = []
+            snap.docChanges()
+                .forEach(change => {
+                    change.doc.id
+                    let data = change.doc.data()
+                    let obj = {
+                        name: data.name,
+                        message: data.message,
+                        time: moment(data.time).format('lll')
+                    }
+                    obj.id = change.doc.id
+                    this.messages = [...this.messages, obj]
+                })
+                this.updateMsgs(this.messages)
+                this.messages = []
         })
     }
 }
