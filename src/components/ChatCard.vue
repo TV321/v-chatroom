@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-card
-            class="mx-auto text-left mt-5"
+            class="mx-auto text-left mt-5 grey lighten-5"
             max-width="600"
         >
             <div class="msg-container" ref="msg">

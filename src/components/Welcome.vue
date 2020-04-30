@@ -1,16 +1,13 @@
 <template>
-    <div>
-
+    <div class="">
     <v-card
-        class="mx-auto"
+        class="mx-auto mt-10 grey lighten-5"
         max-width="344"
     >
         <div class="mt-4 pt-4">
-            <h2 class="display-1 text--primary text-center">Welcome</h2>  
-        </div>
-            
+            <h2 class="display-1 text-center cyan--text text--darken-3">Welcome</h2>  
+        </div> 
         <v-card-text>  
-            
             <v-form
                 ref="form"
                 v-model="valid"
@@ -22,6 +19,7 @@
                     md="12"
                     >
                     <v-text-field
+                        color="cyan darken-3"
                         v-model="name"
                         :rules="nameRules"
                         :counter="10"
@@ -33,12 +31,13 @@
                 </v-row>
                 </v-container>
                 <v-btn
+                    depressed
                     :disabled="!valid"
-                    text
-                    color="deep-purple accent-4"
+                    dark          
+                    color="cyan darken-3"
                     @click="onSubmit"
                 >
-                Submit
+                Enter
                 </v-btn>
             </v-form>
         </v-card-text>
@@ -70,3 +69,10 @@ export default {
     }
 }
 </script>
+
+<style lang="sass" scoped>
+    .theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn-outlined) 
+        color: #FAFAFA !important
+        background-color: darken(#E0E0E0, 10%) !important
+
+</style>

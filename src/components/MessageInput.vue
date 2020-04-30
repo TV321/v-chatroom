@@ -1,7 +1,7 @@
 <template>
     <div class="input-container">
         <v-form @submit.prevent="addMessage" ref="form">
-            <v-text-field label="New Message:" v-model="message" :rules="msgRules" @blur="resetValid"></v-text-field>
+            <v-text-field label="New Message:" v-model="message" :rules="msgRules" @blur="resetValid" color="cyan darken-3"></v-text-field>
         </v-form>
     </div>
 </template>
