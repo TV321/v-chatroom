@@ -4,20 +4,23 @@
             class="mx-auto text-left mt-5"
             max-width="600"
         >
+            <div v-for="msg in messages" :key="msg.id">
             <v-card-text>
-            <div>
-                <p class="text--primary body-1">well meaning and kindly.a benevolent smile</p>
+            
+                <p class="text--primary body-1">{{ msg.message }}</p>
                 <div class="text--primary">
-                    {{ name }}
+                    {{ msg.name }}
                 </div>
                 <div class="">
-                    Time
+                    {{ msg.time }}
                 </div>
-            </div>
+            
             </v-card-text>
             <v-divider></v-divider>
+            </div>
+            
             <v-card-actions>
-                <MessageInput :name="name"/>
+                <MessageInput :name="name" :updateMsgs="updateMsgs"/>
             </v-card-actions>
         </v-card>
     </div>
@@ -32,5 +35,13 @@ export default {
     components: {
         MessageInput
     },
+    data: () => ({
+        messages: []
+    }),
+    methods: {
+        updateMsgs(msgList) {
+            this.messages = [...this.messages, ...msgList]
+        }
+    }
 }
 </script>
