@@ -40,7 +40,7 @@ export default {
     }),
     methods: {
         updateMsgs(msgList) {
-            this.messages = [...this.messages, ...msgList]
+            this.messages = [...msgList]
         }
     }
 }

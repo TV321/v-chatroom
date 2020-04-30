@@ -37,7 +37,9 @@ export default {
         }
     },
     created() {
-        db.collection('messages').get().then((snap => {
+
+        db.collection('messages').orderBy('time').onSnapshot(snap =>{
+            console.log(snap.docChanges())
             snap.docs.forEach(doc => {
                 let data = doc.data()
                 let obj = {
@@ -49,7 +51,8 @@ export default {
                 this.messages = [...this.messages, obj]
             })
             this.updateMsgs(this.messages)
-        }))
+            this.messages = []
+        })
     }
 }
 </script>
